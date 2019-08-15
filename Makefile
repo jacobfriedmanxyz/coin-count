@@ -1,15 +1,13 @@
-CC = gcc
+CC = tcc
+PREFIX = ~/.local
 
-bin/coin-count: build/main.o build/config.o build/run.o
-	$(CC) $^ -o $@
-
-build/%.o: src/%.c
-	$(CC) -c $^ -o $@
+build/coin-count: src/main.c
+	$(CC) $< -o $@
 
 .PHONY: clean
 clean:
 	rm build/*
 
 .PHONY: install
-install: bin/coin-count
-	cp $^ /usr/local/bin/
+install: build/coin-count
+	cp $^ $(PREFIX)/bin/
