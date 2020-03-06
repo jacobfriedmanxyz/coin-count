@@ -1,8 +1,9 @@
-CC = tcc
+CC = c99
+CFLAGS = -Wall -O3
 PREFIX = ~/.local
 
 build/coin-count: src/main.c
-	$(CC) $< -o $@
+	$(CC) $(CFLAGS) $< -o $@
 
 .PHONY: clean
 clean:
